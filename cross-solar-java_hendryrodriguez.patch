@@ -1,0 +1,533 @@
+From 1a9cd8ac2cd1e9b20e6d5618bbeae112628c2091 Mon Sep 17 00:00:00 2001
+From: System Administrator <root@Hendrys-MacBook-Pro.local>
+Date: Sat, 11 Aug 2018 20:00:47 -0500
+Subject: [PATCH] My submission
+XOV: XO_0_0_1
+
+---
+ src/.DS_Store                                      | Bin 0 -> 8196 bytes
+ src/main/.DS_Store                                 | Bin 0 -> 8196 bytes
+ src/main/java/.DS_Store                            | Bin 0 -> 8196 bytes
+ src/main/java/com/.DS_Store                        | Bin 0 -> 8196 bytes
+ src/main/java/com/crossover/.DS_Store              | Bin 0 -> 8196 bytes
+ .../techtrial/controller/PanelController.java      |  14 ++---
+ .../crossover/techtrial/dto/DailyElectricity.java  |  66 ++-------------------
+ .../techtrial/model/HourlyElectricity.java         |  10 ++--
+ .../repository/DailyElectricityRepository.java     |  26 ++++++++
+ .../techtrial/service/DailyElectricityService.java |  20 +++++++
+ .../service/DailyElectricityServiceImpl.java       |  31 ++++++++++
+ .../techtrial/controller/PanelControllerTest.java  |  44 ++++++++++++++
+ 12 files changed, 139 insertions(+), 72 deletions(-)
+ create mode 100644 src/.DS_Store
+ create mode 100644 src/main/.DS_Store
+ create mode 100644 src/main/java/.DS_Store
+ create mode 100644 src/main/java/com/.DS_Store
+ create mode 100644 src/main/java/com/crossover/.DS_Store
+ create mode 100644 src/main/java/com/crossover/techtrial/repository/DailyElectricityRepository.java
+ create mode 100644 src/main/java/com/crossover/techtrial/service/DailyElectricityService.java
+ create mode 100644 src/main/java/com/crossover/techtrial/service/DailyElectricityServiceImpl.java
+
+diff --git a/src/.DS_Store b/src/.DS_Store
+new file mode 100644
+index 0000000000000000000000000000000000000000..f32d39a07ee616a0da945325ca860cdd51c68cdb
+GIT binary patch
+literal 8196
+zcmeHMOK=oL82<lFATtA)NepDzL|l!L5E2M^@(8kd87Ra=HZLH$ncW%5l(REoXLdIb
+zL#@RX@c|d1yjWEE;NU^ISY>%stE^H>szeW7EcM{Us|QQ}p6*SBgdDu6Wu~jTzn=d8
+zzaL+JJ6$~s0N9^1_5o-BAW>$hZldBoiP>3Rl_H|0oDeA<QUz}=WxFYQ{(O~p*bp)h
+zG7vHlG7vHlGVotufX-}|q&3ccZVk(jfslc9$pCvl#3(b23oLRBUL8~fR{%nG1qc$=
+zRaPO435*LYawH2S<e`K-6vY(-c{sJlgkM}>ks}WW6qgSaBcr&XU@$uM9}C<8;~c{>
+zWFTZ<H3RJDQw|x>!2)Ob{XI2jTb|$6_AN%r$~SDRkR(M?wkXdgX5B)<*ZrK=uV>G&
+zr%~OXO^N!L>)K0oJvCvOg``?D;5xo;Ic7EpwhWV8rY9}Oa0~rz&M~~8p9D8Zk}Szd
+zRa;o-?CNTXb#}Kew!{{CdfKSo(Y?4ROSO&r4j-GzoWHQ};^M_O_?l3>7oc**8m}*3
+zpzY-c_y>wernJDjr3K2$CT*xn8BVIzd7AggoNu{~H(_Qy!lYX1(OQqCU1v0FGW%rO
+zwR0KAOR80A-A?Ch-8cJeJ7HZgy(!<E_gU?<=VtwZz%i++InO+4lAo0~2g%!;vZy=e
+zrlNdn^VaCY4Na}>J%{3VwmeX&R#hv?X`;mOt>-N>J6^C1fA*B_rA^1MoU@a8%d=9p
+zIp*jYvkF^eIf&X;t7%iYlyxp=`RCOJNeWu)>NREBpdnAV2J6jGZ%f=iR<CJim}MYq
+zQfY{Q#~L+d%wsdth2ySfMHzd6_DuD}P<!?&+PJN!Oj|W%K2ArcqD|&GW9o6yxW8J_
+zrqXUELrd{QTkl~_dyWnJl<xT>bEZR6`b>=7M^ie*Y<-5oCL}e)oA{>64e>Uyy%KDP
+zJ#;D^g=sKh4lcoExB{=h4Y&#K!)^EkK7}vfOZW=DhVS7=_z8Z7U*I?R1O7xnL<P5D
+zEo%4(K8{Ve3!AY6_v1l4guOU~$MFO{jUzaPGnm3O8koU67H}S4!dLNiyo%TGO?(^Q
+z!FTaJ`~W}Xvx<~NcvQ?%0DerBrC%9|P<$neoV=e1qk}cdlmCtgzuU}}_h8M|9Su8o
+zw{;ynvb1w6w(A}_Emu$=8?K8$FC{$$LcK%!+#an{9xBOqrL4zEVdlKV1g%zZ?^yIv
+ziNv8w!K2a`m1UAIw>3taB}t8NOKWtmOnOzzxUF63lt`KC25#+94#=ckwVYdfl_w;U
+zsJf9`>y&=#7XFsj-hx~35$Wt3xC=j!#(pJz{Z87dz^Xu7by$x(a3|@j8FynVc4H47
+zAdL;+AZctENAVd<;22I|Qs~S?2VFdeS@dxcFJh7Ob_p-z%Xo!!_ZnWu8!MDHyh3R=
+zmn$uw$U3&`oTavsGVgT{pVl)2Wqk1(yZ;ZZ{r!JEQxvW}WZ-|#0G1CX2K#B5YaJ5o
+zt{tO1LzyM!SL7IkP!U|m34`l6;nE+5RF9D>i-`*?a-<eY|M-W1@ca*W4~zB9z+XJs
+Bx7Yvx
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/main/.DS_Store b/src/main/.DS_Store
+new file mode 100644
+index 0000000000000000000000000000000000000000..f2e6b7f1a0a8d0329a1c73b7868b23c8e05d0a61
+GIT binary patch
+literal 8196
+zcmeHMOK=oL82<lFATtA)NepDzL|l!L5E2M^@(8+l87Ra=HZLH$ncW%5=<H0`ncWS<
+zP-}5T6!apL7mF$%96Tr&t1ORdl~rm<mFU5Xr5?O^^<e4W)4i#Xkb@Vs%yd=v*VF(1
+z_v7ntr>kcH0Q+;sJ^&2>B+3lcO;p??F+0nvQbe?r6C%Y!s^HC~Y&S*EpRe)`8$t#`
+z20{ix20{ix2L1~S(3#DWw8pv5tzj855HheX8DQ^+7-fcWfklqNtAmQ*3P8xN070U<
+z$|{60fpLLFj%1;PJd}`!qPSup52yB+@QVv9a^&HF;_`uFWE3|P3`VE^V}UzhoMTvq
+z41^4<W`O;C%Hes?ArJcU`+I86wmiSB?OTkLm2cQsAxVm)Y*C&`%({hyulqT#U(cRq
+zPoug&n-cXg*R_}GdTPQl3rV$Rz;%4xa?ETHY#AoGOix;l;THPcoMU)FKM8J-Bw3P^
+zs<yDu+11q&>+Eh{Y>6%O^t4gEqkC~tmTDXK9X>jfId^{H#l;J6@HL@$FF@srHC|i3
+zK-<d?@DCJ`Olg64N(+>gP1;bEGMrSa^EB^~Ip1;}Z^F!agh{p1qqQDQyUu9VWcJCl
+zYv(eKmsG3Lx}DD1x^MQ`cEUPudQ-kR@3Yz|&&~P+fn!otbDnv^BtI)}4wAPwWl?v`
+zO-1?U=B?2O8=6|%dk)2KZ@I5ht*Ta(Q$&g5ThCc$cD!I2{_IKJOPh{iIcFyGmS?4G
+zbIj2*W)-%`auBtxR@0_(DeG*`^3SOak`%Po)oaSMK|>yQ4c42X-jcX~tX|VjGs{5M
+zq|y)pk2Gq^n8#+O3&&l}iZb>B?V0L{q4w-mv~gQcnYL=ke4LI>MVriX#?)h?aeuX<
+zO{LvThL+-qw%)^<_ADFrN!{~D=1hmC^qCmDkEV2z+4>BFO-O2pH}OrC8{%zZdnMQo
+zd+1a;0@Gl^99)D;a2Z~K>u>|!hg<Lod<tK{m+%#Q4d26$@DuzDzrb(s2mFbEhzf4Q
+zTGa3%d=#5-7dB%D?#F|82zzk|kKu8A3P*4XXE23nG%$mCEZ{u8gs<XNd<|d6H}P$J
+z2j9i_@B{pi&ni+9;Sn)Q0r)XhmVRX<Lh+R>a^hYhj1JZ)Py9O~{BAQ>-u*ROcQowW
+z-PU#R@ui(xv0Zn`X}N*|*>GJ1dMW845bABx=k{ow@<2(xD`h=S3Nz;=CTO*Sd&i;=
+zOC%0e3Lcfls4SCwxveqUEJ<pFTUw)gWzwr!#%=9Nr$owBH*jl@azG~Ss^#3;t2`!=
+zMAePlTBr0=xA3>L_7>cPk4R_Vz#aI3H1;d$>vz&t1y%*xs>6ERfjdcG&A1y|u^W5v
+z0BLLh2T5bYIEqhW0>^LylR{@EI_TnA%%YErcma!~w~KfQU&hO%yDNANudh(r@Cv2f
+zSgy2uBJ0?$bB5YV%Dme>d|J;8l<~!D?EXKr_V@qwOi{S@kb(a_16V$o80@EIu60PT
+zyLOE73}u#>Uy)-FLPc;LCk(FRgiC)IQawhlEG90n$dOto{o@}3!t+1iJuKEY1AhUP
+C#J9-+
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/main/java/.DS_Store b/src/main/java/.DS_Store
+new file mode 100644
+index 0000000000000000000000000000000000000000..c59b0a2520e5fbc44fd9a72f8cfad8c0fdc85712
+GIT binary patch
+literal 8196
+zcmeHMOK=oL82<lFATtA)NepDzL|k1XAtVs;<Pl`^GEj(#Y+gWgGrKdADQ9Pvo!Q+$
+z47C<l#OFmQFBVlkICxMlR#_g^Dy!6zD$#=%OFek;>cP^#r#k@>a`2*-OjmV(J^lZG
+zKfeBUx_TA>aG+r90nh+IqRdd;K*e1Wv$MP^MMO&_AyPbexwP%3>FM)yZk2b~5Hb)l
+z5Hb)l5Hb)l@Lynn&TN*XHO_r*4a<;$kb!%W0rq}~QD&GBSmqeKI;aS)0EFxc5G1Or
+ztU?$Qm=IXzNES-SLkW2(iYo^4aB7bUzl6XtM;;C+E*~gHMsY*IV07v~7Ptc@IEH1&
+zK*+#q2H4N10y5x2HeI^?{%%{I-`@T$Mk*@Tt*??KMN&2?PbcTxQqtG`f;XV&PqC*l
+z-JeT~`nc=b%XK|HX_=*zS~uuAzHT{YJ_xo9lU!z|EXQz518%`Fyr7>XH%O8!$thJ^
+zSm^5RZjE*IbS$>U7J7TzsovSMxF}2YO?wU=na!R(xA6Sp`8W8AP`nkOdc_Ja-&&sS
+z6$km}iAXk`<IB6bv^-hapbgh3BPq4ENV6Wz`IhT=lV;u{OsUl#t@KF7b;j~0vrlDQ
+zyO4Fflv<O~?M%VeeY4-Tlh!%YoA%9lpVdx!Zr&dZ98;=V@XX^T`B_DCh`haNi@IZO
+zD$3V3ZjL?}Z*J@8J&?Gu>Aq^UrdCl-5+ROnJ!_fyiIQdbb0>5!V>*WAoSrILo|U%E
+zaYxUZHP|Z4LDZIdO`9&HtuqD7KdZ(iDQInI)RY;6hCJpPtT#iwE^+@@qo$o=mchJ9
+zr6B?yY0{K&kIhUMjyqZuW&AnXG1U`8?b@wq6Skf<ZPk$ZIGtUJHdW+|sYgZQ-daVQ
+z&bZkuEyWXUeFrt|88++_y62DPOoyiQnHamDrgVbY`VE6kNQx(#`IgG@M7!8r3AVy6
+zI*|^;449CE3vdxG!Ao!juEP6p9X^3i;S2Z@zJjmed-xH4f}i0R_znJmKM@d7!7W&i
+z8a{-NVl(c*7VN~mxE~K-9}eSDJcdu=C{E)nrZIyCX0eDRoW~dNWqcK1!`Jamd>h}v
+zckw;^06*ljiY!U+u$ZL){Fo}@7e*2kU&tcI?<T?MP@VGlzazo#HgetFU$=Q%eEZJ!
+z?)`_B_ie>y-65vi^%IDOt0GX#k{SY;-XL{ujW#F`EQxoes3%BY=Dft@tX6UFSoC3u
+zq@hZ|qtX<WWfCv9HAPz_NsVwzTXeTfYE>(^twZUONSEq5ZtYd}$)sGhl3V+f$0QP{
+zx}IAblmY4%{+80-f@|;*sq7oL2|tj+ekFDNPRgpnnm}0%*ofP3JE^M$cVZj%U@z_?
+zg$?2mDQpDC@F`5<I8I_psLVtMT|9$%^l=f-W0}-;0Wac<c!^Z^3SP!5D|9xpLT6WR
+z>8zN{JGSebrj{jD-sv1Zg$%H_Qjj!u{~uoa`+rDP$Uw-z|Cj-+97+xi&;r*wEZAK;
+zMtPPpOU$p#F$kd|xQ-JB*Kxw-KMbiJBUcua5Lo6&EtLN84*}8e{11o^i+h@ZzX0);
+Bw3q+@
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/main/java/com/.DS_Store b/src/main/java/com/.DS_Store
+new file mode 100644
+index 0000000000000000000000000000000000000000..e1bf368378ada7fc40ef947f6fc8c06cf4cbb94d
+GIT binary patch
+literal 8196
+zcmeI1O>Ep$5P)YkX=A%BaYEX-n@|=)XqqN%n&1AUu=yjcN=fK$e%b~$-nD5gymq?w
+z?xqc?7WG=n?}b)eP$hnP-~hcKA&!8A1c*u$4qOm$;KG#yf_Z*#qc%SWE`VA;$#0(D
+z%=o<-f3`Kd0DyyeV;_J901_Qcs+*`=qcJ@@R<($jsU(Ty58#0d1u!9(F0Qf;C&CPb
+z83;2FW+2Q!n1TO82I!m3nzYV$pKHTD%s`lddoly;{Sc#r$+(auE`wJGbwLS0l9d2K
+zqcPP1flo}xxR50-16R5xuO3jiq9`$tyOTb~%t^+DEOE)*0l7P%SQ$lyg2C$K7Yob*
+z<6MS)n1L_@t24kJ9~m-`qsra8y?*!R)3%!??HB2J+w%O5j_)v1QMqAbl_V*WvPF3&
+zG3OQ&zV7F}K|ObxosH}MTw08iu4^xk_4K4=7E@~7kn8xm<(Rp^*)mKrnVGU2!z~WF
+zdB^aA>m;~Bl4MCvsoLUVcTZ1Sth={!sV%nH*VjSguHL03S*mZ|clhXR_T2f!7nUx(
+z$)iK@hJfl7(Oy|QRNE^I@lYe#a;Ue;p~}i8ZKOsSO{uj7iePNsw_L}YG;<!wlv?dk
+z)JHR}GoCY<ek$YI`K;rm)S8TLXY#i0n*+9;u+E#_v~Mo>Y;?+VbN*0Zm{QfeXPz+0
+z&MKJ0WbI8`bU9|GqI`Yx*64#xE$y9shvGN4+*hsE)GEp;N{-`O&sk<}qG%cZ+)3Tb
+zn2upNXQm34XQgd3>F8Or2HRvg@Y+_dY18?%bvAGL=hP-i3T7J`HD$)2C6BuXyPBci
+zkhp!UQPWN{%}~yy-VhFtG;2!IV>{D@;jUIiNj^_^PxZu7d-f{YgsrDdTQy|9PFJ_0
+zO%-^?)MH|Df32cTXWVR-Lh;00|6xsgmM#0F?)hW$rbAo$T&z7nTRO>f1BSsiBsIlb
+z`0bUO;vM2fORydG(D&j9%+PO8^KcO^!DV<EuEI6=0B*pi@ELpwU%}V#4g3H<!O!pu
+z{0hIrpYRs~A}Y8I>rump@KJ2RUD%3UxE~MVA?(KyJch^dDICLToW(R|(7-Gfu!sxz
+zBEEvJ;p_MYzJ>4LyZ9cyk00Vkd{>b&jz`2Ug}_f}u*Q=|IEp7Pa$+qUqr-K|6aNj4
+z-*4s&-e0$MN7K&T9X$shU%rPcZrmMU-Of?~5GN!cr%XnG>`fwdd$d7$pbYX#z$b_`
+zb3tNgt5w`O7JXPEOjId2Rhpx+OdxYzbF@{G)CkwKNB7D^u3Eu$ol3VvjH(;Bwof@A
+z6UAyJ*Y+!qNd&99k!u^2LAosbBkJCU>+mrV_buFlABnc#h_pY5vMQ_zC~Lq*+<`lZ
+zv{u}W?bwTbcz|dd!eOFq6vy#tOkffxF(rsI(Loo_Vh(*=!V6d;@-E^fd<icTfv@5f
+zyt;z9(G|>HTbsE;BInqybB45KTJLlW&+f(yRPdlQR{xKz|NH;l7<w2}n1L_@A_G`C
+zoERRYll5Nytk#avF-r$)%&x>`;6fcUVe>&bPICDVLmJ0~E-qw=OVUvL*MA5IzyGVM
+Nz3}@Vpm<Mpe*-A}#?Al$
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/main/java/com/crossover/.DS_Store b/src/main/java/com/crossover/.DS_Store
+new file mode 100644
+index 0000000000000000000000000000000000000000..a185469576b5945684efcb471a9d70bc45911bbd
+GIT binary patch
+literal 8196
+zcmeHLO>7la6h5adWoBsUv_jhf9(`%87A*9K{)nOQ+E)w>RVuH)6l~|c8Qan6Ono!2
+zuRj)>xDkUcOu)d(=tjcAh|v`rHwX(|U}LL^3l}bQ<I-p}@!Wgo5$Mmxg-V#4+<Wfa
+zbI!f@eDmG8IRgOLl`)zCDgi*E%A~rDnhgrmv%0S21tSF{k^BLCNP`7B*vafV>u?}M
+zAVeTUAVeTUAVlE*fB@autVo;O`$8MGAp#)+k0b)@`w*qdWGs+NLh?@sH9Q3%$x;Ab
+zs84wS_lX8F7RV(bxhu^nvIh)YF-S2`xRXB0%t^)qxg?};2Ndpr!O9q9D9BeQzbH2c
+zj0qXGAp#)+>k(kbN2a{pgcMBPpTB$4N!v}5_D*uzwmiSFaRu}83$_$)l_W({ij{MT
+zNjIDDbwA^E>FH7S)TjHC$)Mlwy7s-ko*cBy?3lVE?mE71IcAzWTZTy{XNN4uaI;-*
+z#xXoTPeLdpNtWa>wQ^yhrM0y_+S1m%SRY+zZ*Qdjp|-_ES*oaQ>gXAtnwwvEZSnjS
+z5gi6!2q;+-?bVG#wY{0R2sQ8BT&SzLP-SJCcA`f)Ic%j|Ct=N-V`_;<k@nDIU)r3Z
+zsD@ImotbjHF|{<M+o_DL`(~$YGh=VqH)nm;JL9=&Kh6!uR5jz7r%kf6X3TD~Cf71H
+z)2V6Savg8bOnW42VvQmI`FhdLNc9s>HMTx;G`?KCy+kc7Q<O7=k>gu0S!Q}5YZ?CJ
+zi0-9K$FQ7<p&84wlD66J=u>7X*30s8c|~QhwoBWSQ>}H8)Ea3xleAvVSpFPeV{etF
+zoHb~7&$$L$#ZW(!WUi^H(zH>giKk6!4M|#7x0e(vb=rPe)un!q;uRwYlm=P#<o;La
+z1@jTDS!t0}Lmsg8q-l$xcIB|7o|K1XMA%}mOzDv1;gmZyML~Le*<&$Hdyy^Mt9$;b
+zY15%C-KMpRD=N#oX-gwa*J&7RLsCtwPJqWTkX3fQXiyC;a0L2b1PsW+MYsf);RCo1
+zpTkYK1z*EA@GY#sD*OmP!>{l=`~iQ$Us#AGxCi%Q6-IF%wqhH$V+=bnj@{UUr!j#8
+zIEbTYpotSWi4JCQ7UyvR-@uFbHok-J;rsY8eu6jfQ@n|{@JqancknK*;HubVUXHW9
+z;yKsi_te|qcoJuW<C!<I5oaUEpH<@jDQCYc5=4D$$IiVqbqAW;kHqf1&NXlGelBtH
+z2zGGR<XFL9;{$YLl-73bRw4sLE^~G*p>sr6x3U8uEo;P*NHkI{5ogrku{QFgM66cx
+z_+0z;M-(-m2+U85cCbN-s9T7u64xGTQ53a+$Skx^A0}-f(N;{Q>{gD+vI=||r8W|m
+zB^B3_a8n9igB$P#d<A!jdOyHV@C*EgK(s5ua-v-nYw&Tb#e>*@P1uYr*nvj_0`}tb
+z*oQ9=2}ki9j^Q}!_%hl=K^LcSjwrZ@=kaxX6EEOfM8->anaFqrui}UJ(HiQV$dOJ+
+zytXm*W)f+~cAW{*=1BXXWBBy2AdoLMTFLVN<D38ge^|l^_ZcD(BJd9oz=G~XcNaNs
+z_CaU4c9iNkRaThYl91em8lH}m<moucARXtnQ8Hydu|O^fNh4JL^&bJ@{U6@{oOzFS
+F^EWCE<k$cJ
+
+literal 0
+HcmV?d00001
+
+diff --git a/src/main/java/com/crossover/techtrial/controller/PanelController.java b/src/main/java/com/crossover/techtrial/controller/PanelController.java
+index d308f18..2cc425d 100644
+--- a/src/main/java/com/crossover/techtrial/controller/PanelController.java
++++ b/src/main/java/com/crossover/techtrial/controller/PanelController.java
+@@ -3,9 +3,9 @@ package com.crossover.techtrial.controller;
+ import com.crossover.techtrial.dto.DailyElectricity;
+ import com.crossover.techtrial.model.HourlyElectricity;
+ import com.crossover.techtrial.model.Panel;
++import com.crossover.techtrial.service.DailyElectricityService;
+ import com.crossover.techtrial.service.HourlyElectricityService;
+ import com.crossover.techtrial.service.PanelService;
+-import java.util.ArrayList;
+ import java.util.List;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.data.domain.Page;
+@@ -33,6 +33,9 @@ public class PanelController {
+   @Autowired
+   HourlyElectricityService hourlyElectricityService;
+   
++  @Autowired
++  DailyElectricityService dailyElectricityService;
++  
+   /**
+    * Register a Panel to System and start receiving the electricity statistics.
+    * @param panel to register.
+@@ -64,7 +67,7 @@ public class PanelController {
+   
+   @GetMapping(path = "/api/panels/{panel-serial}/hourly")
+   public ResponseEntity<?> hourlyElectricity(
+-      @PathVariable(value = "banel-serial") String panelSerial,
++      @PathVariable(value = "panel-serial") String panelSerial,
+       @PageableDefault(size = 5,value = 0) Pageable pageable) {
+     Panel panel = panelService.findBySerial(panelSerial);
+     if (panel == null) {
+@@ -85,11 +88,8 @@ public class PanelController {
+   @GetMapping(path = "/api/panels/{panel-serial}/daily")
+   public ResponseEntity<List<DailyElectricity>> allDailyElectricityFromYesterday(
+       @PathVariable(value = "panel-serial") String panelSerial) {
+-    List<DailyElectricity> dailyElectricityForPanel = new ArrayList<>();
+-    /**
+-     * IMPLEMENT THE LOGIC HERE and FEEL FREE TO MODIFY OR ADD CODE TO RELATED CLASSES.
+-     * MAKE SURE NOT TO CHANGE THE SIGNATURE OF ANY END POINT. NO PAGINATION IS NEEDED HERE.
+-     */
++    List<DailyElectricity> dailyElectricityForPanel = dailyElectricityService.allDailyElectricityFromYesterday(panelSerial);
++    
+     return ResponseEntity.ok(dailyElectricityForPanel);
+   }
+ }
+\ No newline at end of file
+diff --git a/src/main/java/com/crossover/techtrial/dto/DailyElectricity.java b/src/main/java/com/crossover/techtrial/dto/DailyElectricity.java
+index b0e0ea9..45579fa 100644
+--- a/src/main/java/com/crossover/techtrial/dto/DailyElectricity.java
++++ b/src/main/java/com/crossover/techtrial/dto/DailyElectricity.java
+@@ -1,7 +1,5 @@
+ package com.crossover.techtrial.dto;
+ 
+-import java.io.Serializable;
+-import java.time.LocalDate;
+ 
+ /**
+  * DailyElectricity class will hold sum, average,minimum and maximum electricity for a given day.
+@@ -9,64 +7,12 @@ import java.time.LocalDate;
+  *
+  */
+ 
+-public class DailyElectricity implements Serializable {
++public interface DailyElectricity {
+   
+-  private static final long serialVersionUID = 3605549122072628877L;
+-
+-  private LocalDate date;
+-  
+-  private Long sum;
+-  
+-  private Double average;
+-  
+-  private Long min;
+-  
+-  private Long max;
+-
+-  public LocalDate getDate() {
+-    return date;
+-  }
+-
+-  public void setDate(LocalDate date) {
+-    this.date = date;
+-  }
+-
+-  public Long getSum() {
+-    return sum;
+-  }
+-
+-  public void setSum(Long sum) {
+-    this.sum = sum;
+-  }
+-
+-  public Double getAverage() {
+-    return average;
+-  }
+-
+-  public void setAverage(Double average) {
+-    this.average = average;
+-  }
+-
+-  public Long getMin() {
+-    return min;
+-  }
+-
+-  public void setMin(Long min) {
+-    this.min = min;
+-  }
+-
+-  public Long getMax() {
+-    return max;
+-  }
+-
+-  public void setMax(Long max) {
+-    this.max = max;
+-  }
+-
+-  @Override
+-  public String toString() {
+-    return "DailyElectricity [date=" + date + ", sum=" + sum + ", average="
+-        + average + ", min=" + min + ", max=" + max + "]";
+-  }
++	Long getSum();
++	Double getAverage();
++	Long getMin();
++	Long getMax();
++	String getDate();
+ 
+ }
+diff --git a/src/main/java/com/crossover/techtrial/model/HourlyElectricity.java b/src/main/java/com/crossover/techtrial/model/HourlyElectricity.java
+index 275f765..64d8ea0 100644
+--- a/src/main/java/com/crossover/techtrial/model/HourlyElectricity.java
++++ b/src/main/java/com/crossover/techtrial/model/HourlyElectricity.java
+@@ -1,6 +1,8 @@
+ package com.crossover.techtrial.model;
+ 
+-import com.fasterxml.jackson.annotation.JsonIgnore;
++import com.fasterxml.jackson.annotation.JsonProperty;
++import com.fasterxml.jackson.annotation.JsonProperty.Access;
++
+ import java.io.Serializable;
+ import java.time.LocalDateTime;
+ import javax.persistence.Column;
+@@ -30,9 +32,9 @@ public class HourlyElectricity implements Serializable {
+   @GeneratedValue(strategy = GenerationType.IDENTITY)
+   Long id;
+   
+-  @JsonIgnore
++  @JsonProperty(access = Access.WRITE_ONLY)
+   @ManyToOne
+-  @JoinColumn(name = "panel_id", referencedColumnName = "id")
++  @JoinColumn(name = "panel_id", referencedColumnName = "id", insertable = true)
+   Panel panel;
+   
+   @Column(name = "generated_electricity")
+@@ -126,6 +128,4 @@ public class HourlyElectricity implements Serializable {
+         + generatedElectricity + ", readingAt=" + readingAt + "]";
+   }
+   
+-  
+-  
+ }
+diff --git a/src/main/java/com/crossover/techtrial/repository/DailyElectricityRepository.java b/src/main/java/com/crossover/techtrial/repository/DailyElectricityRepository.java
+new file mode 100644
+index 0000000..0446687
+--- /dev/null
++++ b/src/main/java/com/crossover/techtrial/repository/DailyElectricityRepository.java
+@@ -0,0 +1,26 @@
++package com.crossover.techtrial.repository;
++
++import java.util.List;
++ 
++import org.springframework.data.jpa.repository.Query;
++import org.springframework.data.repository.CrudRepository;
++import org.springframework.data.rest.core.annotation.RestResource;
++import org.springframework.stereotype.Repository;
++
++import com.crossover.techtrial.dto.DailyElectricity;
++import com.crossover.techtrial.model.Panel;
++
++/**
++ * DailyElectricityRepository get all DailyElectricity From Yesterday.
++ * @author Hendry Rodriguez
++ *
++ */
++
++@RestResource(exported = false)
++@Repository
++public interface DailyElectricityRepository extends CrudRepository<Panel, Long>{
++	    
++	    @Query(value = " SELECT  SUM(hourly_electricity.generated_electricity) as sum, AVG(hourly_electricity.generated_electricity) as average, MAX(hourly_electricity.generated_electricity) as max, MIN(hourly_electricity.generated_electricity) as min,  DATE_FORMAT(hourly_electricity.reading_at,\"%Y-%m-%d\") as date " + 
++	    		  " FROM  panel  INNER JOIN hourly_electricity on panel.id = hourly_electricity.panel_id WHERE panel.serial = ?1  group by DATE_FORMAT(hourly_electricity.reading_at,\"%Y-%m-%d\") ", nativeQuery = true)
++	    List<DailyElectricity> allDailyElectricityFromYesterday(String panelSerial);
++}
+diff --git a/src/main/java/com/crossover/techtrial/service/DailyElectricityService.java b/src/main/java/com/crossover/techtrial/service/DailyElectricityService.java
+new file mode 100644
+index 0000000..53b313c
+--- /dev/null
++++ b/src/main/java/com/crossover/techtrial/service/DailyElectricityService.java
+@@ -0,0 +1,20 @@
++package com.crossover.techtrial.service;
++
++import java.util.List;
++
++import com.crossover.techtrial.dto.DailyElectricity;
++
++/**
++ * DailyElectricityService interface for DailyElectricity.
++ * @author Hendry Rodriguez
++ *
++ */
++public interface DailyElectricityService {
++	
++	/**
++	   * Get all DailyElectricity From Yesterday.
++	   * @param panelSerial.
++	   */
++	List<DailyElectricity> allDailyElectricityFromYesterday(String panelSerial);
++
++}
+diff --git a/src/main/java/com/crossover/techtrial/service/DailyElectricityServiceImpl.java b/src/main/java/com/crossover/techtrial/service/DailyElectricityServiceImpl.java
+new file mode 100644
+index 0000000..c3cb37d
+--- /dev/null
++++ b/src/main/java/com/crossover/techtrial/service/DailyElectricityServiceImpl.java
+@@ -0,0 +1,31 @@
++package com.crossover.techtrial.service;
++
++import java.util.List;
++
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Service;
++
++import com.crossover.techtrial.dto.DailyElectricity;
++import com.crossover.techtrial.repository.DailyElectricityRepository;
++
++/**
++ * DailyElectricityServiceImpl for panel related handling.
++ * @author Hendry Rodriguez
++ *
++ */
++@Service
++public class DailyElectricityServiceImpl implements DailyElectricityService {
++	
++	@Autowired
++	DailyElectricityRepository dailyElectricityRepository;
++	
++	/* (non-Javadoc)
++	   * @see com.crossover.techtrial.service.DailyElectricityService#allDailyElectricityFromYesterday(com.crossover.techtrial.dto.DailyElectricity)
++	   */
++
++	@Override
++	public List<DailyElectricity> allDailyElectricityFromYesterday(String panelSerial) {
++		return dailyElectricityRepository.allDailyElectricityFromYesterday(panelSerial);
++	}
++
++}
+diff --git a/src/test/java/com/crossover/techtrial/controller/PanelControllerTest.java b/src/test/java/com/crossover/techtrial/controller/PanelControllerTest.java
+index a1deacf..bcf2c5e 100644
+--- a/src/test/java/com/crossover/techtrial/controller/PanelControllerTest.java
++++ b/src/test/java/com/crossover/techtrial/controller/PanelControllerTest.java
+@@ -1,5 +1,7 @@
+ package com.crossover.techtrial.controller;
+ 
++import com.crossover.techtrial.dto.DailyElectricity;
++import com.crossover.techtrial.model.HourlyElectricity;
+ import com.crossover.techtrial.model.Panel;
+ import org.junit.Assert;
+ import org.junit.Before;
+@@ -10,13 +12,19 @@ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.test.context.SpringBootTest;
+ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+ import org.springframework.boot.test.web.client.TestRestTemplate;
++import org.springframework.core.ParameterizedTypeReference;
+ import org.springframework.http.HttpEntity;
+ import org.springframework.http.HttpHeaders;
++import org.springframework.http.HttpMethod;
+ import org.springframework.http.MediaType;
+ import org.springframework.http.ResponseEntity;
+ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+ import org.springframework.test.web.servlet.MockMvc;
+ 
++import java.text.SimpleDateFormat;
++import java.util.Date;
++import java.util.List;
++
+ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+ 
+ 
+@@ -52,6 +60,42 @@ public class PanelControllerTest {
+         "/api/register", panel, Panel.class);
+     Assert.assertEquals(202,response.getStatusCode().value());
+   }
++  
++  @Test
++  public void testHourlyElectricityShouldBeRegistered() throws Exception {
++	  
++	for (int i = 0; i < 5; i++) {
++		int generatedElectricity = (int )(Math.random() * 99999 + 5000);
++		
++		Date date = new Date();
++		SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd hh:mm:ss"); 
++		
++		HttpEntity<Object> panel = getHttpEntity(
++		        "{\"panel\":{\"id\": 1}, \"generatedElectricity\": \"" + generatedElectricity + "\"," 
++		            + " \"reading_at\": \"" + dt.format(date) + "\" }");
++		    ResponseEntity<HourlyElectricity> response = template.postForEntity(
++		        "/api/panels/232323/hourly", panel, HourlyElectricity.class);
++		    Assert.assertEquals(200,response.getStatusCode().value());
++	}
++  }
++  
++  @Test
++  public void testHourlyElectricityGET() throws Exception {
++	  
++		    ResponseEntity<HourlyElectricity> response = template.getForEntity(
++		        "/api/panels/232323/hourly", HourlyElectricity.class);
++		    Assert.assertEquals(200,response.getStatusCode().value());
++	
++  }
++  
++  @Test
++  public void testAllDailyElectricityFromYesterday() throws Exception {
++	  
++		    ResponseEntity<List<DailyElectricity>> response = template.exchange(
++		        "/api/panels/232323/daily", HttpMethod.GET, null, new ParameterizedTypeReference<List<DailyElectricity>>() {});
++		    Assert.assertEquals(200,response.getStatusCode().value());
++	
++  }
+ 
+   private HttpEntity<Object> getHttpEntity(Object body) {
+     HttpHeaders headers = new HttpHeaders();
+-- 
+2.15.2 (Apple Git-101.1)
+
