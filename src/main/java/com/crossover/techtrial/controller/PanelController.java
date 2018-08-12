@@ -3,9 +3,9 @@ package com.crossover.techtrial.controller;
 import com.crossover.techtrial.dto.DailyElectricity;
 import com.crossover.techtrial.model.HourlyElectricity;
 import com.crossover.techtrial.model.Panel;
+import com.crossover.techtrial.service.DailyElectricityService;
 import com.crossover.techtrial.service.HourlyElectricityService;
 import com.crossover.techtrial.service.PanelService;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -32,6 +32,9 @@ public class PanelController {
   
   @Autowired
   HourlyElectricityService hourlyElectricityService;
+  
+  @Autowired
+  DailyElectricityService dailyElectricityService;
   
   /**
    * Register a Panel to System and start receiving the electricity statistics.
@@ -64,7 +67,7 @@ public class PanelController {
   
   @GetMapping(path = "/api/panels/{panel-serial}/hourly")
   public ResponseEntity<?> hourlyElectricity(
-      @PathVariable(value = "banel-serial") String panelSerial,
+      @PathVariable(value = "panel-serial") String panelSerial,
       @PageableDefault(size = 5,value = 0) Pageable pageable) {
     Panel panel = panelService.findBySerial(panelSerial);
     if (panel == null) {
@@ -85,11 +88,8 @@ public class PanelController {
   @GetMapping(path = "/api/panels/{panel-serial}/daily")
   public ResponseEntity<List<DailyElectricity>> allDailyElectricityFromYesterday(
       @PathVariable(value = "panel-serial") String panelSerial) {
-    List<DailyElectricity> dailyElectricityForPanel = new ArrayList<>();
-    /**
-     * IMPLEMENT THE LOGIC HERE and FEEL FREE TO MODIFY OR ADD CODE TO RELATED CLASSES.
-     * MAKE SURE NOT TO CHANGE THE SIGNATURE OF ANY END POINT. NO PAGINATION IS NEEDED HERE.
-     */
+    List<DailyElectricity> dailyElectricityForPanel = dailyElectricityService.allDailyElectricityFromYesterday(panelSerial);
+    
     return ResponseEntity.ok(dailyElectricityForPanel);
   }
 }

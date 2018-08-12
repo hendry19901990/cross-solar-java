@@ -1,6 +1,8 @@
 package com.crossover.techtrial.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
@@ -30,9 +32,9 @@ public class HourlyElectricity implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
   
-  @JsonIgnore
+  @JsonProperty(access = Access.WRITE_ONLY)
   @ManyToOne
-  @JoinColumn(name = "panel_id", referencedColumnName = "id")
+  @JoinColumn(name = "panel_id", referencedColumnName = "id", insertable = true)
   Panel panel;
   
   @Column(name = "generated_electricity")
@@ -125,7 +127,5 @@ public class HourlyElectricity implements Serializable {
     return "HourlyElectricity [id=" + id + ", panel=" + panel + ", generatedElectricity="
         + generatedElectricity + ", readingAt=" + readingAt + "]";
   }
-  
-  
   
 }
